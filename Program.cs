@@ -18,7 +18,7 @@ builder.Services.Configure<Settings>(options =>
     options.ShouldSetupAdminUser = builder.Configuration["ShouldSetupAdminUser"];
 });
 builder.Services.AddScoped<AdminSetupService>();
-builder.Services.AddHostedService<AdminSetupHostedService>();
+builder.Services.AddScoped<AdminSetupHostedService>(); 
 builder.Services.AddScoped<TokenService>();
 
 

@@ -7,12 +7,12 @@ namespace Portfolio.Models
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; }
+        public string? Id { get; set; }
 
         [BsonElement("UserName")]
-        public string UserName { get; set; }
+        public string? UserName { get; set; }
 
         [BsonElement("PasswordHash")]
-        public string PasswordHash { get; set; }
+        public string? PasswordHash { get; set; }
     }
 }
