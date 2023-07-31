@@ -27,5 +27,26 @@ namespace Portfolio.Database
                 return _database.GetCollection<User>("Users");
             }
         }
+        public IMongoCollection<Project> Projects
+        {
+            get
+            {
+                return _database.GetCollection<Project>("Projects");
+            }
+        }
+        public IMongoCollection<Skill> Skills
+        {
+            get
+            {
+                return _database.GetCollection<Skill>("Skills");
+            }
+        }
+        public IMongoCollection<AboutMe> AboutMes
+        {
+            get
+            {
+                return _database.GetCollection<AboutMe>("AboutMes");
+            }
+        }
     }
 }
