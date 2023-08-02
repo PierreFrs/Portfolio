@@ -1,6 +1,8 @@
 using Portfolio.Configuration;
 using Portfolio.Database;
+using Portfolio.Models;
 using Portfolio.Services;
+using Amazon.S3;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,8 +22,15 @@ builder.Services.Configure<Settings>(options =>
 builder.Services.AddScoped<AdminSetupService>();
 builder.Services.AddScoped<AdminSetupHostedService>(); 
 builder.Services.AddScoped<TokenService>();
+builder.Services.AddScoped<CVService>();
+builder.Services.AddScoped<UserPicture>();
 
+// Retrieve the AWS S3 configuration from appsettings.json
+var awsOptions = builder.Configuration.GetAWSOptions();
 
+// Add the AWS S3 client to the service collection
+builder.Services.AddDefaultAWSOptions(awsOptions);
+builder.Services.AddAWSService<IAmazonS3>();
 
 var app = builder.Build();
 
