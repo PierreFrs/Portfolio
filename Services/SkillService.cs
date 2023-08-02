@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using Portfolio.Database;
 using Portfolio.Models;
 using MongoDB.Driver;
@@ -25,6 +23,16 @@ namespace Portfolio.Services
             return await _dbContext.Skills.Find(_ => true).ToListAsync();
         }
 
-        // Implement update and delete methods for Skills here, similar to the ones in ProjectService.
+        public async Task<Skill> GetSkillByIdAsync(string id)
+        {
+            return await _dbContext.Skills.Find(s => s.Id == id).FirstOrDefaultAsync();
+        }
+
+        public async Task<Skill> DeleteSkillAsync(string id)
+        {
+            var filter = Builders<Skill>.Filter.Eq(s => s.Id, id);
+            var deletedSkill = await _dbContext.Skills.FindOneAndDeleteAsync(filter);
+            return deletedSkill;
+        }
     }
 }

@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Components;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
 using Portfolio.Configuration;
@@ -46,6 +47,20 @@ namespace Portfolio.Database
             get
             {
                 return _database.GetCollection<AboutMe>("AboutMes");
+            }
+        }
+        public IMongoCollection<CV> CVs
+        {
+            get
+            {
+                return _database.GetCollection<CV>("CVs");
+            }
+        }
+        public IMongoCollection<UserPicture> UserPictures
+        {
+            get
+            {
+                return _database.GetCollection<UserPicture>("UserPictures");
             }
         }
     }

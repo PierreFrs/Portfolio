@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using Portfolio.Database;
 using Portfolio.Models;
 using MongoDB.Driver;

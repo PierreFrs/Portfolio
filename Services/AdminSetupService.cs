@@ -22,9 +22,12 @@ namespace Portfolio.Services
 
         public async Task SetupAdminUser()
         {
+            Console.WriteLine("Admin user setup process started.");
+
             bool shouldSetupAdmin = bool.Parse(_settings.ShouldSetupAdminUser);
             if (!shouldSetupAdmin)
             {
+                Console.WriteLine("Admin user setup process skipped.");
                 return;
             }
             
@@ -51,6 +54,7 @@ namespace Portfolio.Services
             await _dbContext.Users.InsertOneAsync(user);
 
             Console.WriteLine("Admin user was created successfully.");
+            Console.WriteLine("Admin user setup process completed.");
         }
 
         public async Task<string> Login(string userName, string password)
